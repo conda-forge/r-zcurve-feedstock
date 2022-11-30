@@ -1,4 +1,4 @@
-{% set version = '2.1.2' %}
+{% set version = "2.2.0" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,11 +11,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/zcurve_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/zcurve/zcurve_{{ version }}.tar.gz
-  sha256: 127856eb5489ef1bb77c9d40787383bf2b9cc05e7198000ec67bb58d596caa48
+  sha256: 5cb1ed1d221fff7fe9a368a1df8361694ec3e47c9c5577cd485e106dd58fb243
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -27,7 +27,7 @@ requirements:
     - {{ compiler('cxx') }}  # [not win]
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem  # [win]
-    - {{ posix }}make 
+    - {{ posix }}make
     - {{ posix }}sed  # [win]
     - {{ posix }}coreutils  # [win]
     - {{ posix }}zip  # [win]
@@ -56,16 +56,11 @@ about:
   home: https://fbartos.github.io/zcurve/
   dev_url: https://github.com/FBartos/zcurve
   license: GPL-3.0-only
-  summary: "An implementation of z-curves - a method for estimating expected discovery and replicability
-    rates on the bases of test-statistics of published studies. The package provides
-    functions for fitting the new density and EM version (Barto\u0161 & Schimmack, 2020,
-    <doi:10.31234/osf.io/urgtn>), censored observations, as well as the original density
-    z-curve (Brunner & Schimmack, 2020, <doi:10.15626/MP.2018.874>). Furthermore, the
-    package provides summarizing and plotting functions for the fitted z-curve objects.
-    See the aforementioned articles for more information about the z-curves, expected
-    discovery and replicability rates, validation studies, and limitations."
+  summary: An implementation of z-curves - a method for estimating expected discovery and replicability rates on the bases of test-statistics of published studies. The package provides functions for fitting the new density and EM version (Bartoš & Schimmack, 2020, <doi:10.31234/osf.io/urgtn>), censored observations, as well
+    as the original density z-curve (Brunner & Schimmack, 2020, <doi:10.15626/MP.2018.874>). Furthermore, the package provides summarizing and plotting functions for the fitted z-curve objects. See the aforementioned articles for more information about the z-curves, expected discovery and replicability rates, validation
+    studies, and limitations.
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
