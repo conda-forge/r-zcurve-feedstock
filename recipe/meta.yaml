@@ -1,5 +1,4 @@
 {% set version = "2.4.0" %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -22,30 +21,33 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}  # [not win]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}  # [not win]
-    - {{ compiler('m2w64_cxx') }}  # [win]
-    - {{ posix }}filesystem  # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ posix }}filesystem        # [win]
     - {{ posix }}make
-    - {{ posix }}sed  # [win]
-    - {{ posix }}coreutils  # [win]
-    - {{ posix }}zip  # [win]
-
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-rcpp >=1.0.2
     - r-rdpack
     - r-evmix
+    - r-ggplot2
     - r-nleqslv
-
+    - r-rlang
   run:
     - r-base
-    - {{ native }}gcc-libs  # [win]
+    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=1.0.2
     - r-rdpack
     - r-evmix
+    - r-ggplot2
     - r-nleqslv
+    - r-rlang
 
 test:
   commands:
@@ -59,6 +61,7 @@ about:
   summary: An implementation of z-curves - a method for estimating expected discovery and replicability rates on the bases of test-statistics of published studies. The package provides functions for fitting the new density and EM version (Bartoš & Schimmack, 2020, <doi:10.31234/osf.io/urgtn>), censored observations, as well
     as the original density z-curve (Brunner & Schimmack, 2020, <doi:10.15626/MP.2018.874>). Furthermore, the package provides summarizing and plotting functions for the fitted z-curve objects. See the aforementioned articles for more information about the z-curves, expected discovery and replicability rates, validation
     studies, and limitations.
+  license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
@@ -68,7 +71,6 @@ extra:
     - thewchan
 
 # The original CRAN metadata for this package was:
-
 # Package: zcurve
 # Title: An Implementation of Z-Curves
 # Version: 2.1.2
@@ -90,7 +92,6 @@ extra:
 # Author: Frantisek Bartos [aut, cre], Ulrich Schimmack [aut]
 # Repository: CRAN
 # Date/Publication: 2022-02-07 21:00:02 UTC
-
 # See
 # https://docs.conda.io/projects/conda-build for
 # more information about meta.yaml
