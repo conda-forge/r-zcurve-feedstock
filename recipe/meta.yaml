@@ -1,4 +1,4 @@
-{% set version = "2.4.1" %}
+{% set version = "2.4.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/zcurve_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/zcurve/zcurve_{{ version }}.tar.gz
-  sha256: dccaa1152ca06e8f46a7c326695e4ae10bd8237caba4d153a7df7042c546578b
+  sha256: 38c195eaa8e9e2bf7a0045964e8b0a8bec0375c59b7ae6dd1656ba4a80043d29
 
 build:
   merge_build_host: true  # [win]
