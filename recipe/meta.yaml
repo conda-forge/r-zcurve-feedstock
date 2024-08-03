@@ -1,6 +1,5 @@
 {% set version = "2.4.2" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-zcurve
@@ -13,8 +12,7 @@ source:
   sha256: 38c195eaa8e9e2bf7a0045964e8b0a8bec0375c59b7ae6dd1656ba4a80043d29
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -43,7 +41,6 @@ requirements:
     - r-rlang
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=1.0.2
     - r-rdpack
     - r-evmix
