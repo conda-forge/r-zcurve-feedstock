@@ -1,4 +1,4 @@
-{% set version = "2.4.2" %}
+{% set version = "2.4.3" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,13 +9,17 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/zcurve_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/zcurve/zcurve_{{ version }}.tar.gz
-  sha256: 38c195eaa8e9e2bf7a0045964e8b0a8bec0375c59b7ae6dd1656ba4a80043d29
+  sha256: 7a5852fd0eb9174061e51449c93a522b0c06247352483350140bb00bd1b2c3a1
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
