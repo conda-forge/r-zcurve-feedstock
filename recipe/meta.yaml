@@ -1,4 +1,4 @@
-{% set version = "2.4.7" %}
+{% set version = "2.5.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/zcurve_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/zcurve/zcurve_{{ version }}.tar.gz
-  sha256: 40101f1c45151cb3fe1cf7bb83a31daaccc963cd4946b6d493faddeb48de8d13
+  sha256: a62b58afb01a01800bdf65e70d2c50ec3ac823204341f6315a7aaba90c7d760e
 
 build:
   number: 0
